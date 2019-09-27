@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import  Swal  from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,20 @@ import { Injectable } from '@angular/core';
 export class AlertSerService {
 
   constructor() { }
+
+  successMsg(msg){
+    Swal.fire({
+      title:"Success",
+      text:msg,
+      type: "success"
+    })
+  }
+
+  errorMsg(errMsg){
+    Swal.fire({
+      title:"Error",
+      text:errMsg,
+      type: "error"
+    })
+  }
 }
