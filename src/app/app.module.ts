@@ -9,6 +9,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrpageComponent } from './errpage/errpage.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonSerService } from './common/common-ser.service';
+import { AlertSerService } from './common/alert-ser.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +25,14 @@ import { ErrpageComponent } from './errpage/errpage.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CommonSerService,
+    AlertSerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

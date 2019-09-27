@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: {
+    "registerUrl": "http://localhost:4000/api/register",
+    "loginUrl": "http://localhost:4000/api/login"
+  }
 };
 
 /*
