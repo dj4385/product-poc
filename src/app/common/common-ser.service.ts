@@ -17,4 +17,7 @@ export class CommonSerService {
   loginUser(loginUserObj){
     return this._httpClient.post(environment.apiUrl.loginUrl, loginUserObj)
   }
+  getProducts(){
+    return this._httpClient.get(environment.apiUrl.getProductUrl)
+  }
 }

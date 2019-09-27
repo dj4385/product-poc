@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrl: {
     "registerUrl": "http://localhost:4000/api/register",
-    "loginUrl": "http://localhost:4000/api/login"
+    "loginUrl": "http://localhost:4000/api/login",
+    "getProductUrl" : "http://localhost:4000/api/product/products"
   }
 };
 
