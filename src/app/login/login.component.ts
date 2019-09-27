@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonSerService } from '../common/common-ser.service';
 import { AlertSerService } from '../common/alert-ser.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,21 +14,31 @@ export class LoginComponent implements OnInit {
     email : "",
     password : ""
   }
+  response : any = {}
+  
   constructor(
     private _commonSer : CommonSerService,
-    private _alertSer : AlertSerService
+    private _alertSer : AlertSerService,
+    private _route : Router
   ) { }
 
   ngOnInit() {
   }
 
   login(){
-    console.log(this.loginUserObj)
     this._commonSer.loginUser(this.loginUserObj).subscribe(
-      res=>{
-        console.log(res)
-        this._alertSer.successMsg(res)
-        this.reset()
+      res =>{
+        this.response = res
+        if(!this.response.token){
+          this._alertSer.errorMsg(this.response.message)
+        } else {
+          localStorage.setItem('token',this.response.token),
+          localStorage.setItem('name',this.response.name)
+          localStorage.setItem('email',this.response.email)
+          this._alertSer.successMsg(this.response.message)
+          this.reset()
+          this._route.navigate(['dashboard'])
+        }
       },
       err=>{
         console.log(err)
