@@ -2,23 +2,28 @@
     <div class="row mt-5">
       <div class="col-lg-3"></div>
       <div class="col-lg-6 mt-5 border border-primary rounded">
-          <h3 class="text-center">Register</h3>
-        <div class="form-group">
+        <h3 class="text-center">Register</h3>
+        <form #regForm="ngForm">
+          <div class="form-group">
             <label for="">Name</label>
-            <input type="text" name="" id="" class="form-control">
+            <input type="text" name="fullName" id="" class="form-control" [(ngModel)]="regUserObj.fullName" #fullName="ngModel" required>
+            <small class="text-danger" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">Name is Required*</small>
           </div>
-        <div class="form-group">
-          <label for="">Email ID</label>
-          <input type="email" name="" id="" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="">Password</label>
-          <input type="password" name="" id="" class="form-control">
-        </div>
-        <div class="form-group">
-          <input type="button" value="Register" class="btn btn-primary">
-          <a [routerLink]="[ '/login']" class="text-primary d-flex justify-content-end">Login Now</a>
-        </div>
+          <div class="form-group">
+            <label for="">Email ID</label>
+            <input type="email" name="email" id="" class="form-control" [(ngModel)]="regUserObj.email" #email="ngModel" email required >
+            <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Email Address is Required*</small>
+          </div>
+          <div class="form-group">
+            <label for="">Password</label>
+            <input type="password" name="password" id="" class="form-control" [(ngModel)]="regUserObj.password" #pass="ngModel" #password required>
+            <small class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">Password is Required*</small>
+          </div>
+          <div class="form-group">
+            <input type="button" value="Register" [disabled]="regForm.invalid" (click)="register()" class="btn btn-primary">
+            <a [routerLink]="[ '/login']" class="text-primary d-flex justify-content-end">Login Now</a>
+          </div>
+        </form>
       </div>
       <div class="col-lg-3"></div>
     </div>

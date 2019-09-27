@@ -3,18 +3,22 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6 mt-5 border border-primary rounded">
         <h3 class="text-center">Login</h3>
-      <div class="form-group">
-        <label for="">Email ID</label>
-        <input type="email" name="" id="" class="form-control">
-      </div>
-      <div class="form-group">
-        <label for="">Password</label>
-        <input type="password" name="" id="" class="form-control">
-      </div>
-      <div class="form-group">
-        <input type="button" value="Login" class="btn btn-success">
-        <a [routerLink]="[ '/register']" class="text-primary d-flex justify-content-end">Create new account</a>
-      </div>
+      <form #loginForm="ngForm">
+        <div class="form-group">
+          <label for="">Email ID</label>
+          <input type="email" name="emailID" id="" class="form-control" [(ngModel)]="loginUserObj.email" #email="ngModel" email required>
+          <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Email address is required*</small>
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="password" name="password" id="" class="form-control" [(ngModel)]="loginUserObj.password" #pass="ngModel" required>
+          <small class="text-danger" *ngIf="pass.invalid && (pass.dirty || pass.touched)">Password is required*</small>
+        </div>
+        <div class="form-group">
+          <input type="button" value="Login" [disabled]="loginForm.invalid" class="btn btn-success">
+          <a [routerLink]="[ '/register']" class="text-primary d-flex justify-content-end">Create new account</a>
+        </div>
+      </form>
     </div>
     <div class="col-lg-3"></div>
   </div>

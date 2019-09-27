@@ -16,6 +16,5 @@ export class CommonSerService {
   }
   loginUser(loginUserObj){
     return this._httpClient.post(environment.apiUrl.loginUrl, loginUserObj)
-
   }
 }
