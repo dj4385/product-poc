@@ -9,9 +9,9 @@ import { CommonSerService } from '../common/common-ser.service';
 export class RegisterComponent implements OnInit {
 
   regUserObj = {
-    fullName : '',
-    email : '',
-    password : ''
+    fullName : "",
+    email : "",
+    password : ""
   }
 
   constructor(
@@ -23,13 +23,23 @@ export class RegisterComponent implements OnInit {
 
   register(){
     console.log(this.regUserObj)
-    // this._commonSer.registerUser(this.regUserObj).subscribe(
-    //   res=>{
-    //     console.log(res)
-    //   },
-    //   err=>{
-    //     console.log(err)
-    //   }
-    // )
+    this._commonSer.registerUser(this.regUserObj).subscribe(
+      res=>{
+        console.log(res)
+        this.reset()
+      },
+      err=>{
+        console.log(err)
+        this.reset()
+      }
+    )
+  }
+
+  reset(){
+    this.regUserObj = {
+      fullName : "",
+      email : "",
+      password : ""
+    }
   }
 }
