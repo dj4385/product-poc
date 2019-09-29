@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonSerService } from '../common/common-ser.service';
 import { AlertSerService } from '../common/alert-ser.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,8 @@ export class DashboardComponent implements OnInit {
   totalProducts : number = 0
   constructor(
     private _comSer : CommonSerService,
-    private _alert : AlertSerService
+    private _alert : AlertSerService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -56,6 +58,10 @@ export class DashboardComponent implements OnInit {
         }
       )
     }
+  }
+
+  updateProduct(item){
+    this._router.navigate(['/addProduct'],item)
   }
  
 
