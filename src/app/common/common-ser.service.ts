@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment'
 @Injectable({
   providedIn: 'root'
 })
-export class CommonSerService {
+export class CommonSerService{
 
   constructor(
     private _httpClient: HttpClient
@@ -21,11 +21,13 @@ export class CommonSerService {
     let _header = new HttpHeaders({"token":token})
     return this._httpClient.get(environment.apiUrl.getProductUrl, { headers: _header})
   }
-  addProduct(){
-
+  addProduct(productObj, token){
+    let _header = new HttpHeaders({"token": token})
+    return this._httpClient.post(environment.apiUrl.addProductUrl, productObj, {headers: _header})
   }
-  updateProduct(){
-
+  updateProduct(id, productObj, token){
+    let _header = new HttpHeaders({"token": token})
+    return this._httpClient.put(environment.apiUrl.updateProductUrl+id, productObj, {headers: _header})
   }
   deleteProduct(id,token){
     let _header = new HttpHeaders({"token":token})

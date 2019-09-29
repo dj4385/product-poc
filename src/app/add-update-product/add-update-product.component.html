@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-lg-12 pt-2 border border-primary">
-      <h2 class="text-center">Add Product Detail</h2>
-      <h2 class="text-center">Update Product Detail</h2>
+      <h2 class="text-center" *ngIf="isProductDetailObj">Add Product Detail</h2>
+      <h2 class="text-center" *ngIf="!isProductDetailObj">Update Product Detail</h2>
       <form #addUpdateProductForm = "ngForm">
         <div class="form-group">
           <label for="">Product Name</label>
@@ -21,9 +21,9 @@
           <small class="text-danger" *ngIf="price.invalid && (price.dirty || price.touched)">Invalid Product Price*</small>
         </div>
         <div class="form-group d-flex justify-content-end">
-          <input type="button" value="Add Product" [disabled]="addUpdateProductForm.invalid" class="btn btn-success mr-2">
-          <input type="button" value="Update Product" [disabled]="addUpdateProductForm.invalid" class="btn btn-primary mr-2">
-          <input type="button" value="Cancel" class="btn btn-danger">
+          <input type="button" value="Add Product" *ngIf="isProductDetailObj" [disabled]="addUpdateProductForm.invalid" (click)="addProduct()" class="btn btn-success mr-2">
+          <input type="button" value="Update Product" *ngIf="!isProductDetailObj" [disabled]="addUpdateProductForm.invalid" (click)="updateProduct()" class="btn btn-primary mr-2">
+          <input type="button" value="Cancel" (click)="reset()" class="btn btn-danger">
         </div>
       </form>
     </div>
