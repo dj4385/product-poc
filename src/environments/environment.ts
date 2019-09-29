@@ -7,7 +7,10 @@ export const environment = {
   apiUrl: {
     "registerUrl": "http://localhost:4000/api/register",
     "loginUrl": "http://localhost:4000/api/login",
-    "getProductUrl" : "http://localhost:4000/api/product/products"
+    "getProductUrl" : "http://localhost:4000/api/product/products",
+    "addProductUrl" : "http://localhost:4000/api/product/addProduct",
+    "deleteProductUrl": "http://localhost:4000/api/product/products/",
+    "updateProductUrl": "http://localhost:4000/api/product/products/"
   }
 };
 

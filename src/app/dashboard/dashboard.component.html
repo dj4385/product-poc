@@ -11,7 +11,7 @@
             <h4>Price : {{item.price}}</h4>
             <h4>Quantity: {{item.productQty}}</h4>
             <input type="button" value="Update" class="btn btn-sm btn-primary mr-2">
-            <input type="button" value="Delete" class="btn btn-sm btn-danger">
+            <input type="button" value="Delete" (click)="deleteProduct(item)" class="btn btn-sm btn-danger">
         </div>
     </div>
 </div>

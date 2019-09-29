@@ -41,6 +41,22 @@ export class DashboardComponent implements OnInit {
       this._alert.errorMsg('Invalid Token')
     }
   }
+
+  deleteProduct(item){
+    if(confirm('Are you sure') && this.token != null){
+      this._comSer.deleteProduct(item._id, this.token).subscribe(
+        res=>{
+          if(res){
+            this._alert.successMsg('Product detail deleted successfully')
+            this.getAllProdcuts()
+          }
+        },
+        err=>{
+          this._alert.errorMsg(err.message)
+        }
+      )
+    }
+  }
  
 
 }

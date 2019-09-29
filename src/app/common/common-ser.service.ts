@@ -21,4 +21,14 @@ export class CommonSerService {
     let _header = new HttpHeaders({"token":token})
     return this._httpClient.get(environment.apiUrl.getProductUrl, { headers: _header})
   }
+  addProduct(){
+
+  }
+  updateProduct(){
+
+  }
+  deleteProduct(id,token){
+    let _header = new HttpHeaders({"token":token})
+    return this._httpClient.delete(environment.apiUrl.deleteProductUrl+id, { headers: _header})
+  }
 }
