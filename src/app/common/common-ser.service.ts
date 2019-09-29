@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment'
 
 @Injectable({
@@ -17,7 +17,8 @@ export class CommonSerService {
   loginUser(loginUserObj){
     return this._httpClient.post(environment.apiUrl.loginUrl, loginUserObj)
   }
-  getProducts(){
-    return this._httpClient.get(environment.apiUrl.getProductUrl)
+  getProducts(token){
+    let _header = new HttpHeaders({"token":token})
+    return this._httpClient.get(environment.apiUrl.getProductUrl, { headers: _header})
   }
 }

@@ -6,7 +6,7 @@
         <form #regForm="ngForm">
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" name="fullName" id="" class="form-control" [(ngModel)]="regUserObj.fullName" #fullName="ngModel" required>
+            <input type="text" name="fullName" id="" class="form-control" [(ngModel)]="regUserObj.name" #fullName="ngModel" required>
             <small class="text-danger" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">Name is Required*</small>
           </div>
           <div class="form-group">

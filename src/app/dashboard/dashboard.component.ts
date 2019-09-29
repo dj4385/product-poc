@@ -20,9 +20,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllProdcuts(){
-    let header = new Headers()
-    header.append('token',this.token)
-    this._comSer.getProducts().subscribe(
+    this._comSer.getProducts(this.token).subscribe(
       res=>{
         console.log(res)
       },
