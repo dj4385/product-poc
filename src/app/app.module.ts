@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonSerService } from './common/common-ser.service';
 import { AlertSerService } from './common/alert-ser.service';
+import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
 
 
 
@@ -23,7 +24,8 @@ import { AlertSerService } from './common/alert-ser.service';
     RegisterComponent,
     DashboardComponent,
     HeaderComponent,
-    ErrpageComponent
+    ErrpageComponent,
+    AddUpdateProductComponent
   ],
   imports: [
     BrowserModule,
