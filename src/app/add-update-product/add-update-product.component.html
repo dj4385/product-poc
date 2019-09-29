@@ -1,1 +1,31 @@
 <app-header></app-header>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-lg-12 pt-2 border border-primary">
+      <h2 class="text-center">Add Product Detail</h2>
+      <h2 class="text-center">Update Product Detail</h2>
+      <form #addUpdateProductForm = "ngForm">
+        <div class="form-group">
+          <label for="">Product Name</label>
+          <input type="text" name="_productName" id="" class="form-control" [(ngModel)]="productDetailObj.productName" #pName= "ngModel" required>
+          <small class="text-danger" *ngIf="pName.invalid && (pName.dirty || pName.touched)">Invalid Product Name*</small>
+        </div>
+        <div class="form-group">
+          <label for="">Product Qty</label>
+          <input type="number" min="1" max="100000" name="_productQty" id="" class="form-control" [(ngModel)]="productDetailObj.productQty" #pQty="ngModel" required>
+          <small class="text-danger" *ngIf="pQty.invalid && (pQty.dirty || pQty.touched)">Invalid Product Quantity*</small>
+        </div>
+        <div class="form-group">
+          <label for="">Price</label>
+          <input type="number" name="_price" id="" class="form-control" min="1" max="10000" [(ngModel)]="productDetailObj.price" #price="ngModel" required>
+          <small class="text-danger" *ngIf="price.invalid && (price.dirty || price.touched)">Invalid Product Price*</small>
+        </div>
+        <div class="form-group d-flex justify-content-end">
+          <input type="button" value="Add Product" [disabled]="addUpdateProductForm.invalid" class="btn btn-success mr-2">
+          <input type="button" value="Update Product" [disabled]="addUpdateProductForm.invalid" class="btn btn-primary mr-2">
+          <input type="button" value="Cancel" class="btn btn-danger">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
