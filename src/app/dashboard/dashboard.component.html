@@ -10,7 +10,7 @@
             <h3>Product Name: {{item.productName}}</h3>
             <h4>Price : {{item.price}}</h4>
             <h4>Quantity: {{item.productQty}}</h4>
-            <input type="button" value="Update" (click)="updateProduct(item)" class="btn btn-sm btn-primary mr-2">
+            <input type="button" value="Update" [routerLink]="['/addProduct']" [queryParams]="{ id: item._id}" class="btn btn-sm btn-primary mr-2">
             <input type="button" value="Delete" (click)="deleteProduct(item)" class="btn btn-sm btn-danger">
         </div>
     </div>
