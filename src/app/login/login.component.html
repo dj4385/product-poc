@@ -18,6 +18,9 @@
           <input type="button" value="Login" [disabled]="loginForm.invalid" (click)="login()" class="btn btn-success">
           <a [routerLink]="[ '/register']" class="text-primary d-flex justify-content-end">Create new account</a>
         </div>
+        <div class="form-group">
+          <a [routerLink]="[ '/forget']">Fogot Password</a>
+        </div>
       </form>
     </div>
     <div class="col-lg-3"></div>

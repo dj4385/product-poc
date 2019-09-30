@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonSerService } from './common/common-ser.service';
 import { AlertSerService } from './common/alert-ser.service';
 import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 
@@ -25,7 +26,8 @@ import { AddUpdateProductComponent } from './add-update-product/add-update-produ
     DashboardComponent,
     HeaderComponent,
     ErrpageComponent,
-    AddUpdateProductComponent
+    AddUpdateProductComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

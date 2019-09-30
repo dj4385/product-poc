@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrpageComponent } from './errpage/errpage.component';
 import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'addProduct',
     component: AddUpdateProductComponent
+  },
+  {
+    path: 'forget',
+    component: ForgetPasswordComponent
   },
   {
     path: '',
