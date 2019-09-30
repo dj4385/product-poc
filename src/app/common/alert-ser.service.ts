@@ -12,7 +12,8 @@ export class AlertSerService {
     Swal.fire({
       title:"Success",
       text:msg,
-      type: "success"
+      type: "success",
+      allowOutsideClick: false
     })
   }
 
@@ -20,7 +21,8 @@ export class AlertSerService {
     Swal.fire({
       title:"Error",
       text:errMsg,
-      type: "error"
+      type: "error",
+      allowOutsideClick: false
     })
   }
 }

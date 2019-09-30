@@ -28,16 +28,20 @@ export class AddUpdateProductComponent implements OnInit {
   }
 
   addProduct(){
-    this._comSer.addProduct(this.productDetailObj,this.token).subscribe(
-      res=>{
-        this.response = res
-        this._alert.successMsg(this.response.message)
-        this.reset()
-      },
-      err=>{
-        this._alert.errorMsg(err.message)
-      }
-    )
+    if(this.token !=null){
+      this._comSer.addProduct(this.productDetailObj,this.token).subscribe(
+        res=>{
+          this.response = res
+          this._alert.successMsg(this.response.message)
+          this.reset()
+        },
+        err=>{
+          this._alert.errorMsg(err.message)
+        }
+      )
+    } else {
+      this._alert.errorMsg("Invalid token")
+    }
   }
   updateProduct(){
 
