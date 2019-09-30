@@ -33,4 +33,7 @@ export class CommonSerService{
     let _header = new HttpHeaders({"token":token})
     return this._httpClient.delete(environment.apiUrl.deleteProductUrl+id, { headers: _header})
   }
+  forgetPassword(emailObj){
+    return this._httpClient.post(environment.apiUrl.forgetPasswordUrl, emailObj)
+  }
 }

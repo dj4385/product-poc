@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonSerService } from '../common/common-ser.service';
+import { AlertSerService } from '../common/alert-ser.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -7,13 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  email = ""
+  userObj : any = {
+    email : ""
+  }
 
-  constructor() { }
+  constructor(
+    private _comSer: CommonSerService,
+    private _alertSer: AlertSerService
+  ) { }
 
   ngOnInit() {
   }
-  forgot(){
-    console.log(this.email)
+  forgetPass(){
+    this._comSer.forgetPassword(this.userObj).subscribe(
+      res=>{
+        console.log(res)
+      },
+      err=>{
+        this._alertSer.errorMsg(err.message)
+      }
+    )
   }
 }
