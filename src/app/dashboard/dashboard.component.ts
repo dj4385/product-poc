@@ -33,7 +33,6 @@ export class DashboardComponent implements OnInit {
           this.productsObj = res
           this.productArr = this.productsObj._products
           this.totalProducts = this.productArr.length
-          console.log(this.productArr)
         },
         err=>{
           this._alert.errorMsg(err.message)

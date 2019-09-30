@@ -33,17 +33,15 @@ export class AddUpdateProductComponent implements OnInit {
     if(this.id === undefined){
       this.isProductDetailObj = true
     } else {
-      this._comSer.getProducts(this.token).subscribe(
+      this._comSer.getSingleProduct(this.id,this.token).subscribe(
         res=>{
+          console.log(res)
           this.response = res
-          this.responseArr = this.response._products
-          this.responseArr.forEach(element => {
-            if(element._id === this.id){
-              this.productDetailObj.productName = element.productName
-              this.productDetailObj.productQty = element.productQty
-              this.productDetailObj.price = element.price
+          if(this.response.product._id === this.id){
+              this.productDetailObj.productName = this.response.product.productName
+              this.productDetailObj.productQty = this.response.product.productQty
+              this.productDetailObj.price = this.response.product.price
             }
-          });
         },
         err=>{
           console.log(err)

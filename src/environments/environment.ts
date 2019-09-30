@@ -11,6 +11,7 @@ export const environment = {
     "addProductUrl" : "http://localhost:4000/api/product/addProduct",
     "deleteProductUrl": "http://localhost:4000/api/product/products/",
     "updateProductUrl": "http://localhost:4000/api/product/products/",
+    "getSingleProductUrl": "http://localhost:4000/api/product/product/",
     "forgetPasswordUrl": "http://localhost:4000/api/forgetPassword"
   }
 };

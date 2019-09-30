@@ -21,6 +21,10 @@ export class CommonSerService{
     let _header = new HttpHeaders({"token":token})
     return this._httpClient.get(environment.apiUrl.getProductUrl, { headers: _header})
   }
+  getSingleProduct(id, token){
+    let _header = new HttpHeaders({"token":token})
+    return this._httpClient.get(environment.apiUrl.getSingleProductUrl+id, { headers: _header})
+  }
   addProduct(productObj, token){
     let _header = new HttpHeaders({"token": token})
     return this._httpClient.post(environment.apiUrl.addProductUrl, productObj, {headers: _header})
