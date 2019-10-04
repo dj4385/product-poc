@@ -17,7 +17,8 @@ export class AddUpdateProductComponent implements OnInit {
   token = ""
   id = ""
   isProductDetailObj = false
-
+  productCategory = ['Electronics','Fashion','Toys','Software']
+  _totalPrice = this.productDetailObj.productQty * this.productDetailObj.price 
 
   constructor(
     private _comSer: CommonSerService,
@@ -39,6 +40,7 @@ export class AddUpdateProductComponent implements OnInit {
           this.response = res
           if(this.response.product._id === this.id){
               this.productDetailObj.productName = this.response.product.productName
+              this.productDetailObj.category = this.response.product.category
               this.productDetailObj.productQty = this.response.product.productQty
               this.productDetailObj.price = this.response.product.price
             }
@@ -52,6 +54,8 @@ export class AddUpdateProductComponent implements OnInit {
 
   addProduct(){
     if(this.token !=null){
+      this.productDetailObj.totalPrice = this._totalPrice
+      
       this._comSer.addProduct(this.productDetailObj,this.token).subscribe(
         res=>{
           this.response = res

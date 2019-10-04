@@ -11,6 +11,13 @@
           <small class="text-danger" *ngIf="pName.invalid && (pName.dirty || pName.touched)">Invalid Product Name*</small>
         </div>
         <div class="form-group">
+          <label for="">Category</label>
+          <select name="_category" id="" [(ngModel)]="productDetailObj.category" #category="ngModel" class="form-control" required>
+            <option *ngFor="let pCat of productCategory"> {{ pCat }} </option>
+          </select>
+          <small class="text-danger" *ngIf="category.invalid && (category.dirty || category.touched)">Invalid Product Quantity*</small>
+        </div>
+        <div class="form-group">
           <label for="">Product Qty</label>
           <input type="number" min="1" max="100000" name="_productQty" id="" class="form-control" [(ngModel)]="productDetailObj.productQty" #pQty="ngModel" required>
           <small class="text-danger" *ngIf="pQty.invalid && (pQty.dirty || pQty.touched)">Invalid Product Quantity*</small>
