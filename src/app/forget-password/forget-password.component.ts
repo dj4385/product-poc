@@ -12,6 +12,8 @@ export class ForgetPasswordComponent implements OnInit {
   userObj : any = {
     email : ""
   }
+  
+  response : any = {}
 
   constructor(
     private _comSer: CommonSerService,
@@ -23,11 +25,24 @@ export class ForgetPasswordComponent implements OnInit {
   forgetPass(){
     this._comSer.forgetPassword(this.userObj).subscribe(
       res=>{
-        console.log(res)
+        if(res){
+          this.response = res
+          if(this.response.status === 200){
+            this._alertSer.successMsg(this.response.message)
+            this.reset()
+          } else if(this.response.status === 400){
+            this._alertSer.errorMsg(this.response.message)
+          } else {
+            this._alertSer.errorMsg(this.response.message)
+          }
+        }
       },
       err=>{
         this._alertSer.errorMsg(err.message)
       }
     )
+  }
+  reset(){
+    this.userObj.email = ""
   }
 }
