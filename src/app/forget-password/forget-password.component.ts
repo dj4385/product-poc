@@ -27,10 +27,11 @@ export class ForgetPasswordComponent implements OnInit {
       res=>{
         if(res){
           this.response = res
+          console.log(this.response.status)
           if(this.response.status === 200){
             this._alertSer.successMsg(this.response.message)
             this.reset()
-          } else if(this.response.status === 400){
+          } else if(this.response.status === 404){
             this._alertSer.errorMsg(this.response.message)
           } else {
             this._alertSer.errorMsg(this.response.message)
