@@ -16,6 +16,7 @@ export class AddUpdateProductComponent implements OnInit {
   responseArr : any = []
   token = ""
   id = ""
+  base64textString=""
   isProductDetailObj = false
   productCategory = ['Electronics','Fashion','Toys','Software']
   _totalPrice = this.productDetailObj.productQty * this.productDetailObj.price 
@@ -52,9 +53,28 @@ export class AddUpdateProductComponent implements OnInit {
     }
   }
 
+  uploadImg(event){
+    var files = event.target.files
+    var file = files[0]
+    console.log(file)
+    if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload =this._handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
+    } 
+  }
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+           this.base64textString= btoa(binaryString);
+           console.log("base64 str",this.base64textString);
+   }
+
   addProduct(){
     if(this.token !=null){
       this.productDetailObj.totalPrice = this._totalPrice
+      this.productDetailObj.productImg = this.base64textString
       
       this._comSer.addProduct(this.productDetailObj,this.token).subscribe(
         res=>{
