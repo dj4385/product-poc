@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
   productArr : any = []
   token = ""
   totalProducts : number = 0
+  convertedImg = ""
+
   constructor(
     private _comSer : CommonSerService,
     private _alert : AlertSerService,
@@ -31,6 +33,7 @@ export class DashboardComponent implements OnInit {
       this._comSer.getProducts(this.token).subscribe(
         res=>{
           this.productsObj = res
+          this.getImageFromBase64String(this.productsObj._products)
           this.productArr = this.productsObj._products
           this.totalProducts = this.productArr.length
         },
@@ -41,6 +44,17 @@ export class DashboardComponent implements OnInit {
     } else {
       this._alert.errorMsg('Invalid Token')
     }
+  }
+
+  
+  getImageFromBase64String(productArr){
+    var imgUrl = ""
+    productArr.forEach(element => {
+      this.convertedImg = ""
+      imgUrl = element.productImg
+      this.convertedImg = "data:image/jpeg;base64,"+imgUrl
+      imgUrl = ""
+    });
   }
 
   deleteProduct(item){
