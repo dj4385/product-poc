@@ -62,6 +62,19 @@ export class DashboardComponent implements OnInit {
   updateProduct(item){
     this._router.navigate(['/addProduct'],item)
   }
- 
+  searchProduct(event){
+    let searchKey = event.target.value
+    if(searchKey !== ""){
+      this.productArr.forEach(element => {
+        if(element.productName.toLowerCase() === searchKey.toLowerCase()){
+          this.productArr = []
+          this.productArr.push(element)
+        }
+      });
+    }
+    else{
+      this.getAllProdcuts()
+    }
+  }
 
 }
