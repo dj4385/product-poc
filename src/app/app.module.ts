@@ -15,6 +15,7 @@ import { CommonSerService } from './common/common-ser.service';
 import { AlertSerService } from './common/alert-ser.service';
 import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -37,7 +38,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
   ],
   providers: [
     CommonSerService,
-    AlertSerService
+    AlertSerService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

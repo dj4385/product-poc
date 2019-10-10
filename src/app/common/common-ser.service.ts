@@ -40,4 +40,8 @@ export class CommonSerService{
   forgetPassword(emailObj){
     return this._httpClient.post(environment.apiUrl.forgetPasswordUrl, emailObj)
   }
+
+  isLogin(){
+    return !!localStorage.getItem('token')
+  }
 }

@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrpageComponent } from './errpage/errpage.component';
 import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -18,10 +19,12 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     component: DashboardComponent
   },
   {
     path: 'addProduct',
+    canActivate: [AuthGuard],
     component: AddUpdateProductComponent
   },
   {
