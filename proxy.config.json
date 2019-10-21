@@ -1,6 +1,6 @@
 {
     "/v1/*":{
-        "target": "https://product-poc-1.herokuapp.com/",
+        "target": "https://product-poc-1.herokuapp.com",
         "secure": true,
         "changeOrigin": true
     }
