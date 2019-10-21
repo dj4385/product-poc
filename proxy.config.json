@@ -2,6 +2,7 @@
     "/v1/*":{
         "target": "https://product-poc-1.herokuapp.com",
         "secure": true,
+        "logLevel": "debug",
         "changeOrigin": true
     }
 }
