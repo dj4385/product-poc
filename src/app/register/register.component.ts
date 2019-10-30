@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonSerService } from '../common/common-ser.service';
 import { AlertSerService } from '../common/alert-ser.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+
+
 
 @Component({
   selector: 'app-register',
@@ -19,24 +22,30 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _commonSer : CommonSerService,
     private _alertSer : AlertSerService,
-    private _router: Router
+    private _router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show()
+    setTimeout(()=>{
+      this.spinner.hide()
+    },2000)
   }
 
   register(){
-    console.log(this.regUserObj)
+    this.spinner.show()
     this._commonSer.registerUser(this.regUserObj).subscribe(
       res=>{
         console.log(res)
         this.reset()
+        this.spinner.hide()
         this._alertSer.successMsg("User Created Successfully")
         this._router.navigate(['login'])
       },
       err=>{
-        console.log(err)
         this.reset()
+        this.spinner.hide()
         this._alertSer.errorMsg(err.message)
       }
     )

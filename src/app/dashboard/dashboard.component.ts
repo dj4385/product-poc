@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonSerService } from '../common/common-ser.service';
 import { AlertSerService } from '../common/alert-ser.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,16 +20,17 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _comSer : CommonSerService,
     private _alert : AlertSerService,
-    private _router: Router
+    private _router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
     this.token = localStorage.getItem('token')
     this.getAllProdcuts()
-    
   }
 
   getAllProdcuts(){
+    this.spinner.show()
     if(this.token != null){
       this._comSer.getProducts(this.token).subscribe(
         res=>{
@@ -36,12 +38,15 @@ export class DashboardComponent implements OnInit {
           this.getImageFromBase64String(this.productsObj._products)
           this.productArr = this.productsObj._products
           this.totalProducts = this.productArr.length
+          this.spinner.hide()
         },
         err=>{
+          this.spinner.hide()
           this._alert.errorMsg(err.message)
         }
       )
     } else {
+      this.spinner.hide()
       this._alert.errorMsg('Invalid Token')
     }
   }
@@ -59,14 +64,17 @@ export class DashboardComponent implements OnInit {
 
   deleteProduct(item){
     if(confirm('Are you sure') && this.token != null){
+      this.spinner.show()
       this._comSer.deleteProduct(item._id, this.token).subscribe(
         res=>{
           if(res){
             this._alert.successMsg('Product detail deleted successfully')
+            this.spinner.hide()
             this.getAllProdcuts()
           }
         },
         err=>{
+          this.spinner.hide()
           this._alert.errorMsg(err.message)
         }
       )

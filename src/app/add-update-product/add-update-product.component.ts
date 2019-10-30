@@ -3,6 +3,7 @@ import { CommonSerService } from '../common/common-ser.service';
 import { AlertSerService } from '../common/alert-ser.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-add-update-product',
@@ -25,19 +26,21 @@ export class AddUpdateProductComponent implements OnInit {
     private _comSer: CommonSerService,
     private _alert: AlertSerService,
     private _activeRoute: ActivatedRoute,
-    private _router : Router
+    private _router : Router,
+    private spinner : NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show()
     this.id = this._activeRoute.snapshot.queryParams['id']
     this.token = localStorage.getItem("token")
     console.log("id",this.id)
     if(this.id === undefined){
+      this.spinner.hide()
       this.isProductDetailObj = true
     } else {
       this._comSer.getSingleProduct(this.id,this.token).subscribe(
         res=>{
-          console.log(res)
           this.response = res
           if(this.response.product._id === this.id){
               this.productDetailObj.productName = this.response.product.productName
@@ -45,9 +48,11 @@ export class AddUpdateProductComponent implements OnInit {
               this.productDetailObj.productQty = this.response.product.productQty
               this.productDetailObj.price = this.response.product.price
             }
+          this.spinner.hide()
         },
         err=>{
-          console.log(err)
+          this.spinner.hide()
+          this._alert.errorMsg(err)
         }
       )
     }
@@ -72,6 +77,7 @@ export class AddUpdateProductComponent implements OnInit {
    }
 
   addProduct(){
+    this.spinner.show()
     if(this.token !=null){
       this.productDetailObj.totalPrice = this._totalPrice
       this.productDetailObj.productImg = this.base64textString
@@ -79,31 +85,38 @@ export class AddUpdateProductComponent implements OnInit {
       this._comSer.addProduct(this.productDetailObj,this.token).subscribe(
         res=>{
           this.response = res
+          this.spinner.hide()
           this._alert.successMsg(this.response.message)
           this.reset()
         },
         err=>{
+          this.spinner.hide()
           this._alert.errorMsg(err.message)
         }
       )
     } else {
+      this.spinner.hide()
       this._alert.errorMsg("Invalid token")
     }
   }
   updateProduct(){
+    this.spinner.show()
     if(this.token){
       this._comSer.updateProduct(this.id, this.productDetailObj, this.token).subscribe(
         res=>{
           this.response = res
           this._alert.successMsg(this.response.message)
           this.reset()
+          this.spinner.hide()
           this._router.navigate(['/dashboard'])
         },
         err=>{
+          this.spinner.hide()
           this._alert.errorMsg(err.message)
         }
       )
     } else {
+      this.spinner.hide()
       this._alert.errorMsg("Invalid token")
     }
   }

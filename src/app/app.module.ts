@@ -16,7 +16,7 @@ import { AlertSerService } from './common/alert-ser.service';
 import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AuthGuard } from './auth.guard';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import { AuthGuard } from './auth.guard';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     CommonSerService,
