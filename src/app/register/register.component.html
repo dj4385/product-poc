@@ -7,17 +7,17 @@
         <form #regForm="ngForm">
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" name="fullName" id="" class="form-control" [(ngModel)]="regUserObj.name" #fullName="ngModel" required>
+            <input type="text" name="fullName" id="fullname" class="form-control" [(ngModel)]="regUserObj.name" #fullName="ngModel" required>
             <small class="text-danger" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">Name is Required*</small>
           </div>
           <div class="form-group">
             <label for="">Email ID</label>
-            <input type="email" name="email" id="" class="form-control" [(ngModel)]="regUserObj.email" #email="ngModel" email required >
+            <input type="email" name="email" id="mail" class="form-control" [(ngModel)]="regUserObj.email" #email="ngModel" email required >
             <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Email Address is Required*</small>
           </div>
           <div class="form-group">
             <label for="">Password</label>
-            <input type="password" name="password" id="" class="form-control" [(ngModel)]="regUserObj.password" #pass="ngModel" #password required>
+            <input type="password" name="password" id="regPass" class="form-control" [(ngModel)]="regUserObj.password" #pass="ngModel" #password required>
             <small class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">Password is Required*</small>
           </div>
           <div class="form-group">
