@@ -1,0 +1,5 @@
+To add SSR in project: 
+    ng add @nguniversal/express-engine --clientProject <projectName>
+To create build: 
+    npm run build:ssr    
+

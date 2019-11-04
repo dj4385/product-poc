@@ -31,7 +31,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ForgetPasswordComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
