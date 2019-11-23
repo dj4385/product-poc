@@ -11,9 +11,13 @@ export class HeaderComponent implements OnInit {
   userInfo = {
     name : "",
     email : "",
-    token : ""
+    token : "",
+    isAdmin: ""
   }
 
+  productArr = []
+  isLoginInfoExist = false
+  isAdminLoggedIn = false
   navbarOpen = false
   dropdownOpen = false
   
@@ -25,9 +29,22 @@ export class HeaderComponent implements OnInit {
     this.getLoginUserInfo()
   }
   getLoginUserInfo(){
-    this.userInfo.name = localStorage.getItem('name')
-    this.userInfo.email = localStorage.getItem('email')
-    this.userInfo.token = localStorage.getItem('token')
+    if(localStorage.length !== 0){
+      this.isLoginInfoExist = true
+      this.userInfo.name = localStorage.getItem('name')
+      this.userInfo.email = localStorage.getItem('email')
+      this.userInfo.token = localStorage.getItem('token')
+      this.userInfo.isAdmin = localStorage.getItem('isAdmin')
+
+      if(this.userInfo.isAdmin){
+        this.isAdminLoggedIn = true
+      } else {
+        this.isAdminLoggedIn =false
+      }
+    } else {
+      this.isLoginInfoExist = false
+    }
+    
   }
 
   toggleNavBar(){
@@ -40,6 +57,22 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     localStorage.clear();
-    this._router.navigate(['login'])
+    this._router.navigate(['Home'])
   }
+  
+  searchProduct(event){
+    let searchKey = event.target.value
+    if(searchKey !== ""){
+      this.productArr.forEach(element => {
+        if(element.productName.toLowerCase() === searchKey.toLowerCase()){
+          this.productArr = []
+          this.productArr.push(element)
+        }
+      });
+    }
+    // else{
+    //   this.getAllProdcuts()
+    // }
+  }
+
 }

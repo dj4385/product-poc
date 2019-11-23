@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token',this.response.token),
           localStorage.setItem('name',this.response.name)
           localStorage.setItem('email',this.response.email)
+          localStorage.setItem('contact',this.response.contactNumber)
+          localStorage.setItem('isAdmin',this.response.isAdmin)
           this._alertSer.successMsg(this.response.message)
           this.reset()
           this.spinner.hide()
