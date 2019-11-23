@@ -3,7 +3,7 @@ import { CommonSerService } from '../common/common-ser.service';
 import { AlertSerService } from '../common/alert-ser.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-
+import State  from '../../assets/json/state.json';
 
 
 @Component({
@@ -15,9 +15,19 @@ export class RegisterComponent implements OnInit {
 
   regUserObj = {
     name : "",
+    contactNumber: "",
+    address:"",
+    state: "",
+    city:"",
+    country: "India",
+    pincode: "",
     email : "",
     password : ""
   }
+
+  statesJson : any = []
+  statesArr: any = []
+  cityArr: any = []
 
   constructor(
     private _commonSer : CommonSerService,
@@ -31,6 +41,22 @@ export class RegisterComponent implements OnInit {
     setTimeout(()=>{
       this.spinner.hide()
     },2000)
+    this.getStateInfo()
+  }
+
+  getStateInfo(){
+    this.statesJson = State.states
+    this.statesJson.forEach(element => {
+      this.statesArr.push(element.state)
+    });
+  }
+
+  getCity(event){
+    this.statesJson.forEach(element => {
+      if(event.target.value === element.state){
+       this.cityArr =  element.districts
+      }
+    });
   }
 
   register(){
@@ -54,6 +80,12 @@ export class RegisterComponent implements OnInit {
   reset(){
     this.regUserObj = {
       name : "",
+      contactNumber: "",
+      address:"",
+      state: "",
+      city:"",
+      country: "India",
+      pincode: "",
       email : "",
       password : ""
     }

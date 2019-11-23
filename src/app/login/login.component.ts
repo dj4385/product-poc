@@ -46,7 +46,13 @@ export class LoginComponent implements OnInit {
           this._alertSer.successMsg(this.response.message)
           this.reset()
           this.spinner.hide()
-          this._route.navigate(['dashboard'])
+          if(this.response.isAdmin){
+            this._route.navigate(['adminDashboard'])
+          }
+          else {
+            this._route.navigate(['dashboard'])
+          }
+          
         }
       },
       err=>{

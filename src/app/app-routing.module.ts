@@ -7,6 +7,7 @@ import { ErrpageComponent } from './errpage/errpage.component';
 import { AddUpdateProductComponent } from './add-update-product/add-update-product.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AuthGuard } from './auth.guard';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'adminDashboard',
+    canActivate: [AuthGuard],
+    component: AdminDashboardComponent
   },
   {
     path: 'dashboard',

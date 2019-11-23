@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   apiUrl: {
-      registerUrl: "https://product-poc-1.herokuapp.com/api/register",
+      registerUrl: "/api/register",
       loginUrl: "https://product-poc-1.herokuapp.com/api/login",
       getProductUrl : "https://product-poc-1.herokuapp.com/api/product/products",
       addProductUrl : "https://product-poc-1.herokuapp.com/api/product/addProduct",
@@ -11,3 +11,4 @@ export const environment = {
       forgetPasswordUrl: "https://product-poc-1.herokuapp.com/api/forgetPassword"
     }
 };
+// https://product-poc-1.herokuapp.com

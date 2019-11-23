@@ -11,9 +11,50 @@
             <small class="text-danger" *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)">Name is Required*</small>
           </div>
           <div class="form-group">
+            <label for="">Contact Number</label>
+            <input type="tel" maxlength="10" minlength="10" name="contactNumber" id="contactNumber" class="form-control" [(ngModel)]="regUserObj.contactNumber" #contact="ngModel" required >
+            <small class="text-danger" *ngIf="contact.invalid && (contact.dirty || contact.touched)">Contact Number is Required*</small>
+          </div>
+          <div class="form-group">
             <label for="">Email ID</label>
             <input type="email" name="email" id="mail" class="form-control" [(ngModel)]="regUserObj.email" #email="ngModel" email required >
             <small class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">Email Address is Required*</small>
+          </div>
+          <div class="form-group">
+            <label for="">Address</label>
+            <textarea name="" id="" cols="20" rows="3" style="resize: none;" name="address" id="add" class="form-control" [(ngModel)]="regUserObj.address" #add="ngModel" row="10" required ></textarea>
+            <small class="text-danger" *ngIf="add.invalid && (add.dirty || add.touched)">Address is Required*</small>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="">State</label>
+                <select name="state" id="state"class="form-control" (change)="getCity($event)" [(ngModel)]="regUserObj.state" #state="ngModel" required>
+                  <option *ngFor="let state of statesArr" value={{state}}>{{state}}</option>
+                </select>
+                <small class="text-danger" *ngIf="state.invalid && (state.dirty || state.touched)">State is Required*</small>
+              </div>
+              <div class="col-lg-6">
+                <label for="">City</label>
+                <select name="city" id="city" class="form-control" [(ngModel)]="regUserObj.city" #city="ngModel">
+                  <option *ngFor="let cT of cityArr" value={{cT}}> {{cT}} </option>
+                  <small class="text-danger" *ngIf="city.invalid && (city.dirty || city.touched)">Address is Required*</small>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-lg-6">
+                  <label for="">Country</label>
+                <input type="text" name="country" id="country" class="form-control mr-5" value="India" [(ngModel)]="regUserObj.country" readonly />
+              </div>
+              <div class="col-lg-6">
+                <label for="">Pincode</label>
+                <input type="tel" name="pincode" minlength="6" maxlength="6" class="form-control" id="pin" [(ngModel)]="regUserObj.pincode" #pin="ngModel" required>
+                <small class="text-danger" *ngIf="pin.invalid && (pin.dirty || pin.touched)">Pincode is required</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="">Password</label>

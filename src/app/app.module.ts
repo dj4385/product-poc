@@ -17,6 +17,7 @@ import { AddUpdateProductComponent } from './add-update-product/add-update-produ
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AuthGuard } from './auth.guard';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     HeaderComponent,
     ErrpageComponent,
     AddUpdateProductComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
