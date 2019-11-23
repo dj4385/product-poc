@@ -1,1 +1,5 @@
 https://product-poc-1.herokuapp.com (node  api build url)
+
+to specify the import 
+ng g c new-component --module app (or) ng g c component-name --module ../
+ 

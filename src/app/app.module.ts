@@ -18,6 +18,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { AuthGuard } from './auth.guard';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     ErrpageComponent,
     AddUpdateProductComponent,
     ForgetPasswordComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

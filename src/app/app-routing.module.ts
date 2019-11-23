@@ -8,6 +8,7 @@ import { AddUpdateProductComponent } from './add-update-product/add-update-produ
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { AuthGuard } from './auth.guard';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'Home',
+    component: HomeComponent
   },
   {
     path: 'adminDashboard',
@@ -39,7 +44,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'Home',
     pathMatch: 'full'
   },
   {

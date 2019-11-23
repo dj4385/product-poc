@@ -13,6 +13,9 @@ export class HeaderComponent implements OnInit {
     email : "",
     token : ""
   }
+
+  navbarOpen = false
+  dropdownOpen = false
   
   constructor(
     private _router : Router
@@ -25,6 +28,14 @@ export class HeaderComponent implements OnInit {
     this.userInfo.name = localStorage.getItem('name')
     this.userInfo.email = localStorage.getItem('email')
     this.userInfo.token = localStorage.getItem('token')
+  }
+
+  toggleNavBar(){
+    this.navbarOpen = !this.navbarOpen
+  }
+
+  toggleDropdown(){
+    this.dropdownOpen = !this.dropdownOpen
   }
 
   logout(){
