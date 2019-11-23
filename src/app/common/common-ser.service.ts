@@ -7,17 +7,6 @@ import { environment } from '../../environments/environment'
 })
 export class CommonSerService{
   
-  apiUrl = {
-    "registerUrl": "v1/api/register",
-    "loginUrl": "v1/api/login",
-    "getProductUrl" : "v1/api/product/products",
-    "addProductUrl" : "v1/api/product/addProduct",
-    "deleteProductUrl": "v1/api/product/products/",
-    "updateProductUrl": "v1/api/product/products/",
-    "getSingleProductUrl": "v1/api/product/product/",
-    "forgetPasswordUrl": "v1/api/forgetPassword"
-  }
-
   constructor(
     private _httpClient: HttpClient
   ) { }

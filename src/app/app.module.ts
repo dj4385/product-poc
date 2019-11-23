@@ -33,7 +33,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AdminDashboardComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
