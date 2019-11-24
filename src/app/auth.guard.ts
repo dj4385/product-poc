@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate  {
     if(this._commonSer.isLogin()){
       return true
     } else {
-      this._route.navigate(['/login'])
+      this._route.navigate(['/Home'])
       return false
     }
     
