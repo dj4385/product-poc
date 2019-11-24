@@ -20,6 +20,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { SliderComponent } from './slider/slider.component';
+import { DealOfTheDayComponent } from './deal-of-the-day/deal-of-the-day.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SliderComponent } from './slider/slider.component';
     ForgetPasswordComponent,
     AdminDashboardComponent,
     HomeComponent,
-    SliderComponent
+    SliderComponent,
+    DealOfTheDayComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
