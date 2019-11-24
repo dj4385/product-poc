@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
       this.userInfo.token = localStorage.getItem('token')
       this.userInfo.isAdmin = localStorage.getItem('isAdmin')
 
-      if(this.userInfo.isAdmin){
+      if(this.userInfo.isAdmin === "true"){
         this.isAdminLoggedIn = true
       } else {
         this.isAdminLoggedIn =false
@@ -56,6 +56,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
+    this.isLoginInfoExist = false
+    this.isAdminLoggedIn = false
     localStorage.clear();
     this._router.navigate(['Home'])
   }
@@ -73,6 +75,16 @@ export class HeaderComponent implements OnInit {
     // else{
     //   this.getAllProdcuts()
     // }
+  }
+
+  toggleDashboard(){
+    if(this.isAdminLoggedIn){
+      this._router.navigate(['adminDashboard'])
+    } else if(this.isAdminLoggedIn === false) {
+      this._router.navigate(['dashboard'])
+    } else {
+      this._router.navigate(['Home'])
+    }
   }
 
 }
